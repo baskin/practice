@@ -1,0 +1,63 @@
+
+Assumptions:
+- Accuracy: floating point arithmetic is not associative i.e. a + (b + c) may not be 
+  equal to (a + b) + c (owing to various reasons including rounding off errors).
+  This means that if same data points are published by mutliple threads into the
+  same stats object, the results may differ.
+- Consistency:
+  * Point in time snapshot consistency.
+    Various statistics in a stats snapshot may not be as a result of the same number
+    of data points. An event may be partially applied.
+    Following thread safe implementations do not provide this:
+    - Volatile
+  * Eventual vs strongly
+    Some stats represent a stale view of the system and lag by XX datapoints (or XX seconds)
+    from the live system. Make sure you are ok with this behavior.
+    This is exhibited by the stats in stats.impl.safe.periodic
+    These stats are though consistent in the sense of point in time snapshot i.e. no 
+    event in partially applied.
+- Other considerations:
+  * Read Consistency#2. Besides that, EventualStatistics should not be used in situations
+    where event producing threads are short lived.
+- Max of INT_MAX stats.
+    
+Performance:
+- To assist performance we use MergeableStatistic and ReusableStatistic interfaces.
+  A ReusableStatistic can be merged into MergeableStatistic. The idea is to 
+  divide the collection/computation of stats across threads/stripes such that
+  contention is very low. Followed by merging the stats.
+- Constants memory implementations. Data points are not held, hence can go on forever,
+- Low garbage. Reused.
+  upto INT_MAX or LONG_MAX or even further. 
+  
+  Note on each:
+  SimpleStatistics: 
+  -Bare bones stats class, computation happens during collection
+  (in the producer thread). 
+  -All ops are O(1) assuming math to take constant time.
+  -In terms of bit size k, event() takes O(k^2). 
+  -Class is not thread safe
+  
+  SynchronizedStatistics:
+  -Wrap any statistics into a thread safe version.
+  
+  VolatileStatistics:
+  -Broken as explained above. Consistent object is not published atomically.
+  -Invariants are violated
+  -Inefficient too, as in event(), many volatiles are updated which effectively doesn't allow
+   JVM to use CPU registers.
+  
+  
+  TODO
+ - Unit tests
+ - Performance tests
+ - Distributed stats (map reduce)
+ - SingleStat<T> interface { void event(int); T getValue();}
+   Build meanStat, MinStat..
+ - Maintain min, max, sum, sum of sqrs.
+ - Use queue to enqueue stats and compute periodically.
+ - LongAdders (striped addition)
+ 
+ 
+ 
+ 
