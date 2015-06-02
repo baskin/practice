@@ -22,7 +22,7 @@ import java.util.List;
 
 import javafx.util.Pair;
 
-import com.garg.prep.ds.Trie;
+import com.garg.concepts.ds.Trie;
 
 public class Palindromes
 {

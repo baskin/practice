@@ -52,10 +52,10 @@ public class Practice
     }
     
     private static int count(int tensPlaces, List<Integer> limit) {
-        digit = limit.get(tensPlaces);
+        int digit = limit.get(tensPlaces);
         if (tensPlaces == 0) {
             return digit >= 2 ? 1 : 0;
         }
-        int count = 
+        return -1; // TODO
     }
 }
