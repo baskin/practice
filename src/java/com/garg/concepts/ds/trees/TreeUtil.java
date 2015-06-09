@@ -78,7 +78,7 @@ public class TreeUtil
 			public boolean visit(TreeNode node)
 			{
 				System.out.printf("%4s", node.data);
-				return true;
+				return false;
 			}
 		}
 		Visitor printer = new Printer();

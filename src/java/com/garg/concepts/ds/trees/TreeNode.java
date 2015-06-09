@@ -12,7 +12,7 @@ public class TreeNode
 	}
 	
 	public int data;
-	public int freq;
+	public int freq = -1;
 	public TreeNode leftChild;
 	public TreeNode rightChild;
 	
@@ -31,6 +31,33 @@ public class TreeNode
 	{
 		leftChild = left;
 		rightChild = right;
+	}
+	
+	public boolean isLeaf() 
+	{
+	    return null == leftChild && null == rightChild;
+	}
+	
+	@Override
+	public String toString()
+	{
+	    return "{" + String.valueOf(data) + ":" + String.valueOf(freq) + "}";
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+	    if (!(obj instanceof TreeNode)) {
+	        return false;
+	    }
+	    TreeNode other = (TreeNode) obj;
+	    return data == other.data && freq == other.freq;
+	}
+	
+	@Override
+	public int hashCode()
+	{
+	    return data * 31 + freq;
 	}
 }
 

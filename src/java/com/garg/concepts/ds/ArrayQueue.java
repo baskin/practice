@@ -39,7 +39,7 @@ public class ArrayQueue
 	private final int myCapcacity;
 	// index containing first element.
 	private int myHead = 0;
-	// index after the last element. 
+	// index after the last element where new element should be inserted
 	private int myTail = 0;
 	
 	public ArrayQueue(int capacity) 
