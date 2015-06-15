@@ -1,4 +1,4 @@
-package com.garg.interview;
+package com.garg.websites.gfg.stack;
 
 import java.util.Stack;
 

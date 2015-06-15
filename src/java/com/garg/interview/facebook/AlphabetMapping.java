@@ -1,26 +1,8 @@
-/*
- * Test.java
- *
- * $HeadURL: https://bhupi-practice.googlecode.com/svn/trunk/src/java/com/garg/test/Test.java $
- */
-
-/*
- * Copyright (c) 2010 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
-
 package com.garg.interview.facebook;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.springframework.util.Assert;
 
 public class AlphabetMapping
 {

@@ -1,19 +1,3 @@
-/*
- * ServerSocketExample.java
- *
- * $HeadURL: https://bhupi-practice.googlecode.com/svn/trunk/src/java/com/garg/server/ServerSocketExample.java $
- */
-
-/*
- * Copyright (c) 2009 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
-
 package com.garg.concepts.server;
 
 import java.io.IOException;
@@ -26,13 +10,14 @@ public class ServerSocketExample
 {
     static class ConnectionHandler implements Runnable
     {
-        private Socket socket;
+        private final Socket socket;
 
         public ConnectionHandler(ServerSocket server, Socket socket)
         {
             this.socket = socket;
         }
 
+        @Override
         public void run()
         {
             try {
@@ -64,7 +49,7 @@ public class ServerSocketExample
     }
 
     private ServerSocket server;
-    private int port = 7777;
+    private final int port = 7777;
 
     public ServerSocketExample()
     {

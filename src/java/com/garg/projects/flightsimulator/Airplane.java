@@ -1,18 +1,3 @@
-/*
- * Airplane.java
- *
- * $Header$
- */
-
-/*
- * Copyright (c) 2008 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
 
 package com.garg.projects.flightsimulator;
 
@@ -34,9 +19,8 @@ public class Airplane extends Thread
 
     private long myExpectedFlightTime;
     private long myTakeOffTime;
-    private long myLandingTime;
-
-    public Airplane(Route route, String flightId)
+    private long myLimport java.util.logging.Logger;
+Route route, String flightId)
     {
         init(route, flightId);
     }

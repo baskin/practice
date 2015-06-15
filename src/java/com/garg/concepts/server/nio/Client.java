@@ -1,26 +1,15 @@
-/*
- * Client.java
- *
- * $HeadURL: https://bhupi-practice.googlecode.com/svn/trunk/src/java/com/garg/server/nio/Client.java $
- */
-
-/*
- * Copyright (c) 2009 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
-
 package com.garg.concepts.server.nio;
 
-import java.io.*;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
 public class Client
 {
@@ -131,6 +120,7 @@ public class Client
             sc = client;
         }
 
+        @Override
         public void run()
         {
             System.out.println("Inside receivemsg");

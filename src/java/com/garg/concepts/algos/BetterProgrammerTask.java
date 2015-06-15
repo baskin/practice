@@ -1,19 +1,3 @@
-/*
- * BetterProgrammerTask.java
- *
- * $Header$
- */
-
-/*
- * Copyright (c) 2008 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
-
 package com.garg.concepts.algos;
 
 import java.util.ArrayList;
@@ -63,6 +47,7 @@ public class BetterProgrammerTask
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean hasNext()
         {
             advanceIfNecessary();
@@ -73,6 +58,7 @@ public class BetterProgrammerTask
         /**
          * {@inheritDoc}
          */
+        @Override
         public E next()
         {
             advanceIfNecessary();
@@ -88,6 +74,7 @@ public class BetterProgrammerTask
          * if you call {@link #hasNext()} after calling {@link #next()} but
          * before calling this method, it may fail.
          */
+        @Override
         public void remove()
         {
             myItr.remove();

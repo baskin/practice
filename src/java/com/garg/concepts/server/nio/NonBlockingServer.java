@@ -1,27 +1,22 @@
-/*
- * NonBlockingServer.java
- *
- * $HeadURL: https://bhupi-practice.googlecode.com/svn/trunk/src/java/com/garg/server/nio/NonBlockingServer.java $
- */
-
-/*
- * Copyright (c) 2009 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
-
 package com.garg.concepts.server.nio;
 
-import java.io.*;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.charset.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.util.Iterator;
+import java.util.Set;
 
 public class NonBlockingServer
 {
@@ -75,7 +70,7 @@ public class NonBlockingServer
 
                     ServerSocketChannel ssc =
                         (ServerSocketChannel) key.channel();
-                    socket = (SocketChannel) ssc.accept();
+                    socket = ssc.accept();
                     socket.configureBlocking(false);
 
                     SelectionKey another = socket.register(

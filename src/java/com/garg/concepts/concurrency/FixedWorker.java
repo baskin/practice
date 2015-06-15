@@ -1,19 +1,3 @@
-/*
- * FixedWorkExample.java
- *
- * $Header$
- */
-
-/*
- * Copyright (c) 2008 D. E. Shaw & Co., L.P. All rights reserved.
- *
- * This software is the confidential and proprietary information
- * of D. E. Shaw & Co., L.P. ("Confidential Information").  You
- * shall not disclose such Confidential Information and shall use
- * it only in accordance with the terms of the license agreement
- * you entered into with D. E. Shaw & Co., L.P.
- */
-
 package com.garg.concepts.concurrency;
 
 import java.util.ArrayList;
@@ -36,7 +20,7 @@ public class FixedWorker extends Thread
 {
     private static final int N = 10;
 
-    private BlockingQueue<Task> myQueue;
+    private final BlockingQueue<Task> myQueue;
 
     /**
      * The task to be produced/consumed.
@@ -50,6 +34,7 @@ public class FixedWorker extends Thread
             this.message = message;
         }
 
+        @Override
         public String toString()
         {
             return message;
