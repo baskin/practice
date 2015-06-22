@@ -11,6 +11,19 @@ public class TreeNode
 		}
 	}
 	
+	public static class ThreadedTreeNode extends TreeNode
+	{
+	    /**
+	     * To indicate whether right pointer points to right child or inorder successor.
+	     */
+	    public boolean isRightThreaded = false;
+	    
+	    public ThreadedTreeNode(int d)
+        {
+	        super(d);
+        }
+	}
+	
 	public int data;
 	public int freq = -1;
 	public TreeNode leftChild;

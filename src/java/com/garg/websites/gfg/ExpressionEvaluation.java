@@ -1,4 +1,4 @@
-package com.garg.websites.gfg.stack;
+package com.garg.websites.gfg;
 
 import java.util.Stack;
 
